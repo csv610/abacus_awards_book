@@ -22,6 +22,8 @@ c++ -std=c++23 -O2 -Wall -Wextra -pedantic examples/tarjan.cpp -o /tmp/tarjan
 The same command works for every \texttt{.cpp} file.
 
 \chapter{Robert Endre Tarjan}
+\section{Student objective}
+Learn how three graph algorithms answer three concrete questions: which vertices belong to the same component, which edges are bridges, and which directed vertices can reach one another.
 \section{What the code does}
 \texttt{tarjan.cpp} implements disjoint-set union, bridge detection, and Tarjan's strongly connected component algorithm.
 
@@ -38,6 +40,8 @@ Add articulation points, multigraph support, iterative DFS, dynamic connectivity
 The recursive DFS may overflow the call stack on a very large graph. The implementation also assumes simple graphs in the bridge example.
 
 \chapter{Leslie Valiant}
+\section{Student objective}
+Learn how a zero--one matrix represents a bipartite matching problem, and why the same number of matchings can be computed by two different methods.
 \section{What the code does}
 \texttt{valiant.cpp} counts perfect matchings by recursion and computes the same count with Ryser's formula for the permanent.
 
@@ -54,6 +58,8 @@ Add weighted matrices, larger dynamic-programming instances, approximate countin
 Both methods are exponential. They demonstrate the counting idea but cannot handle the large instances that motivate \#P theory.
 
 \chapter{Alexander Razborov}
+\section{Student objective}
+Learn how to test monotonicity from a complete truth table and use one counterexample to show that parity is not monotone.
 \section{What the code does}
 \texttt{razborov.cpp} tests whether a Boolean function is monotone and shows that three-bit parity is not monotone.
 
@@ -70,6 +76,8 @@ Enumerate small monotone circuits, study clique functions, or build simplified a
 The program demonstrates a simple obstruction. It does not implement Razborov's approximation method or prove an asymptotic circuit lower bound.
 
 \chapter{Avi Wigderson}
+\section{Student objective}
+Learn the difference between vertex labels and graph structure, and see how relabeling and exhaustive checking are used in a tiny graph-isomorphism example.
 \section{What the code does}
 \texttt{wigderson.cpp} compares a five-cycle with a triangle having a two-edge tail. It uses degree sequences as a toy verifier and also performs brute-force graph isomorphism.
 
@@ -86,6 +94,8 @@ Add a real commitment scheme, repeated soundness tests, graph pairs with equal d
 Degree sequences do not solve graph isomorphism in general. The brute-force check is factorial in the number of vertices, and the program is not a complete implementation of IP equals PSPACE.
 
 \chapter{Peter W. Shor}
+\section{Student objective}
+Learn the classical number-theory reduction behind Shor's algorithm: an even order can reveal nontrivial factors of a composite number.
 \section{What the code does}
 \texttt{shor.cpp} computes the order of 7 modulo 15 and uses it to recover the factors 3 and 5.
 
@@ -102,6 +112,8 @@ Add a state-vector simulator, the quantum Fourier transform, measurement samplin
 The current program performs order finding classically. It demonstrates the number theory, not quantum interference or quantum error correction.
 
 \chapter{Madhu Sudan}
+\section{Student objective}
+Learn the central idea of list decoding: keep every candidate message that agrees with enough received symbols instead of forcing one guess.
 \section{What the code does}
 \texttt{sudan.cpp} lists all degree-one polynomials that agree with a received word in at least two positions.
 
@@ -118,6 +130,8 @@ Construct a bivariate interpolation polynomial $Q(x,y)$, factor it, add multipli
 The example uses real-number arithmetic and degree-one messages. Exact finite-field arithmetic and higher-degree interpolation require additional code.
 
 \chapter{Jon Kleinberg}
+\section{Student objective}
+Learn how repeated hub and authority updates produce HITS scores, and how a local greedy rule navigates a small grid with a shortcut.
 \section{What the code does}
 \texttt{kleinberg.cpp} computes HITS authority and hub scores and performs greedy routing on a small grid with a shortcut.
 
@@ -134,6 +148,8 @@ Generate random $n$ by $n$ grids, vary the shortcut exponent $r$, run many trial
 The grid example is tiny and deterministic. It does not reproduce the asymptotic routing theorem or model real social networks.
 
 \chapter{Daniel Spielman}
+\section{Student objective}
+Learn how a graph Laplacian represents energy and how conjugate gradient uses matrix--vector products to solve a small linear system.
 \section{What the code does}
 \texttt{spielman.cpp} computes graph energy and solves a small pinned Laplacian system with conjugate gradient.
 
@@ -150,6 +166,8 @@ Add sparse matrices, preconditioners, effective-resistance sampling, spectral sp
 The solver is dense and intended for small matrices. It is not a nearly-linear-time implementation of Spielman--Teng solvers.
 
 \chapter{Subhash Khot}
+\section{Student objective}
+Learn how vector labels can be rounded into a cut with a random hyperplane, and why the angle between two vectors affects the chance of cutting their edge.
 \section{What the code does}
 \texttt{khot.cpp} represents vertices by vectors, rounds them with random hyperplanes, and samples the Goemans--Williamson ratio.
 
@@ -166,6 +184,8 @@ Generate Unique Games instances, implement a small SDP solver, compare completen
 The code demonstrates rounding, not Khot's hardness reduction or the Unique Games Conjecture. A finite experiment cannot verify an NP-hardness theorem.
 
 \chapter{Constantinos Daskalakis}
+\section{Student objective}
+Learn to recognize the mixed equilibrium of matching pennies, check an epsilon-equilibrium, and follow a small path to its endpoint.
 \section{What the code does}
 \texttt{daskalakis.cpp} prints the matching-pennies equilibrium and follows a small implicit path.
 
@@ -182,6 +202,8 @@ Implement Lemke--Howson, best-response dynamics, approximate equilibria, and an 
 The path is explicitly listed, so it is not a hard implicit PPAD instance. The program does not implement the equilibrium hardness reduction.
 
 \chapter{Mark Braverman}
+\section{Student objective}
+Learn how entropy measures uncertainty and how mutual information measures what remains known after noise. The final protocol calculation is explicitly a toy formula.
 \section{What the code does}
 \texttt{braverman.cpp} computes binary entropy, mutual information for a noisy bit, and the information cost of a simple AND protocol.
 
@@ -198,6 +220,8 @@ Represent protocols as transcript trees, calculate internal and external informa
 The examples use known distributions and exact arithmetic formulas. They do not implement interactive protocol compression or a general direct-sum proof.
 
 \chapter{Shayan Oveis Gharan}
+\section{Student objective}
+Learn the matrix--tree idea on a triangle: enumerate spanning trees, compute edge frequencies, and verify the total with a Laplacian determinant.
 \section{What the code does}
 \texttt{shayan\_oveis\_gharan.cpp} enumerates the three spanning trees of a triangle, computes edge marginals, and verifies the matrix-tree determinant.
 
@@ -214,6 +238,8 @@ Add weighted graphs, random spanning-tree sampling, stable or strongly log-conca
 The triangle is too small to show rapid mixing or the $3/2-\varepsilon$ TSP improvement. The determinant routine is a teaching implementation, not a numerically robust sparse solver.
 
 \chapter{The Complete Lineage}
+\section{Student objective}
+Learn how the book's award history can be represented as records, printed as a timeline, and searched by year.
 \section{What the code does}
 \texttt{all\_winners.cpp} stores the winners and years, prints the lineage, and searches for a winner by year.
 
