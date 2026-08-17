@@ -1,0 +1,132 @@
+\chapter{The Complete Lineage of Winners, 1982--2026}
+\label{chap:all-winners}
+\targetchapterspacing
+\index{Abacus Medal!winners}
+\index{Nevanlinna Prize!winners}
+
+The IMU Abacus Medal is the continuation of the Rolf Nevanlinna Prize in mathematical aspects of information science. The prize has been awarded once every four years at an International Congress of Mathematicians. The name changed after 2018, but the subject and the tradition continued. The complete sequence is:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Year & Award & Winner \\
+\midrule
+1982 & Nevanlinna Prize & Robert Endre Tarjan \\
+1986 & Nevanlinna Prize & Leslie Valiant \\
+1990 & Nevanlinna Prize & Alexander A. Razborov \\
+1994 & Nevanlinna Prize & Avi Wigderson \\
+1998 & Nevanlinna Prize & Peter W. Shor \\
+2002 & Nevanlinna Prize & Madhu Sudan \\
+2006 & Nevanlinna Prize & Jon Kleinberg \\
+2010 & Nevanlinna Prize & Daniel Spielman \\
+2014 & Nevanlinna Prize & Subhash Khot \\
+2018 & Nevanlinna Prize & Constantinos Daskalakis \\
+2022 & Abacus Medal & Mark Braverman \\
+2026 & Abacus Medal & Shayan Oveis Gharan \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The project brief originally said ``1992''. The official schedule begins in 1982 and contains no 1992 award, so the book covers the complete history from 1982 onward. The official IMU list is the authority for the names and years \cite{imu-history}. Each winner now has a separate chapter following this overview.
+
+\section{How to read a lineage}
+The table is more than a list of names. It is a compressed map of changing questions in mathematical information sciences. Tarjan's 1982 award sits near the beginning of the modern study of efficient algorithms, when the main challenge was to make basic operations scale. Valiant's 1986 work widened the lens from finding an object to counting objects and learning rules from examples. Razborov and Wigderson then pushed on the limits of efficient computation: what can circuits prove, and what can interaction reveal?
+
+Shor's 1998 award made the computational model itself part of the story. A quantum machine is not merely a faster classical machine; interference changes which intermediate quantities can be made visible. Sudan's work connected coding and verification, showing how local evidence can certify a global object. Kleinberg and Spielman moved algorithms into networks and numerical structures, where geometry and spectra describe systems too large to inspect one edge at a time.
+
+Khot's 2014 award marked the maturation of approximation theory. Once exact optimization was understood to be too expensive for many problems, the question became how accurately an answer can be produced and whether a better approximation would contradict a complexity assumption. Daskalakis brought this style of complexity analysis into economics, where an equilibrium is guaranteed by a theorem but may still be hard to compute. Braverman made information itself a resource in communication, and Oveis Gharan developed geometric and probabilistic tools for sampling and approximation. The sequence is therefore a history of representations: forests, circuits, protocols, quantum periods, codes, networks, spectra, games, equilibria, transcripts, and polynomials.
+
+\section{A recurring research cycle}
+Across the awards, a similar cycle appears.
+\begin{enumerate}
+\item A natural task is stated in the language of an application: connect components, find a hidden period, check a proof, route through a network, or predict a stable outcome.
+\item The first formulation is usually too literal. It asks for all paths, all assignments, all equilibria, or all possible conversations.
+\item A new representation compresses the relevant information. A data structure remembers a representative; a circuit becomes a polynomial; a protocol becomes a transcript distribution; a graph becomes a matrix.
+\item A theorem identifies the invariant that survives the computation. The invariant may be rank, entropy, distance, a spectral gap, a low-link value, or a potential function.
+\item The representation returns to the application as an algorithm, a lower bound, or a warning that no efficient method should be expected.
+\end{enumerate}
+This cycle is useful for students because it turns a list of breakthroughs into a set of questions. When a problem seems large, ask which information future steps actually need. When a method seems mysteriously powerful, ask what invariant makes its local operations safe. When an algorithm fails, ask whether the representation has thrown away the wrong information.
+
+\section{The changing meaning of efficiency}
+In the early chapters, efficiency is mostly a function of input size. An $O(n)$ graph algorithm is compared with an $O(n^2)$ alternative, and the difference becomes decisive as networks grow. Later chapters require more nuanced measures. A learner needs enough examples as well as enough computation. A communication protocol is judged by the information revealed, not only by the number of transmitted bits. A quantum algorithm uses a different set of allowed operations. An approximation algorithm trades error against running time. A sampling chain must mix before its output is useful.
+
+These measures are not interchangeable. A statistically reliable estimator may be computationally infeasible. A computationally efficient protocol may reveal too much private information. A short proof may be difficult to verify if the verifier lacks the right randomness. A rapidly mixing chain may still have expensive transitions. The mature habit is to state the resource being optimized and the assumptions that make the statement meaningful.
+
+\section{Three kinds of negative knowledge}
+The lineage records several ways mathematics can explain why a direct solution is unlikely. A circuit lower bound says that a restricted model cannot represent a function compactly. An inapproximability result says that even a near-answer would encode a difficult decision. An equilibrium theorem may show that an object exists without providing a fast way to find it. These are different kinds of negative knowledge, and each redirects algorithm design toward promises or representations where progress is possible.
+
+Negative knowledge is productive. It tells researchers which assumption must change: use randomness, allow interaction, change the machine model, settle for approximation, or exploit additional structure in the input. The point of a hardness result is not to end algorithm design but to map the frontier.
+
+\section{A compact comparison of themes}
+\begin{center}
+\begin{tabular}{p{0.23\textwidth}p{0.29\textwidth}p{0.34\textwidth}}
+\toprule
+Theme & Representative winners & Guiding question \\
+\midrule
+Data and graphs & Tarjan, Kleinberg, Spielman & What summary exposes a large structure? \\
+Complexity limits & Razborov, Khot, Daskalakis & What cannot be computed or approximated efficiently? \\
+Verification and information & Valiant, Wigderson, Sudan, Braverman & How much evidence or communication is enough? \\
+New computational models & Shor & Which physical or algebraic operation changes the boundary? \\
+Randomness and geometry & Spielman, Oveis Gharan & How can global structure control a random process? \\
+\bottomrule
+\end{tabular}
+\end{center}
+The categories overlap intentionally. Spielman's spectral methods are both graph algorithms and numerical algorithms. Valiant's counting theory meets randomized sampling, while Sudan's list decoding meets probabilistic verification. Oveis Gharan's polynomial methods connect combinatorics, probability, optimization, and Markov chains. A prize lineage is most informative when the borders are allowed to blur.
+
+\section{Questions to carry through the book}
+For each winner, keep a small research notebook and answer the following.
+\begin{enumerate}
+\item What was the original problem, stated without the winning technique?
+\item What information does the successful representation retain, and what does it ignore?
+\item Which theorem controls the representation as the input or computation evolves?
+\item Is the result an algorithm, a lower bound, an existence theorem, or a new way to measure resources?
+\item What assumption is most fragile: the machine model, the input distribution, the noise level, the approximation promise, or the available randomness?
+\end{enumerate}
+The answers make it easier to compare apparently unrelated areas. Union--find and communication complexity both ask how much of the past must be retained. A PCP verifier and a list decoder both replace a global check with local tests. Spectral partitioning and mixing-time analysis both turn a global obstruction into a statement about an eigenvalue.
+
+\section{Exercises for the overview}
+\begin{enumerate}[label=\textbf{E\arabic*.}]
+\item Choose two chapters whose applications seem unrelated. Identify one common resource measure, such as time, information, distance, or spectral gap.
+\item For each award year, write one sentence describing the main representation associated with the winner. Which years resist a one-sentence summary, and why?
+\item Give an example where deciding whether an object exists is easier than counting all such objects. Explain what an efficient counter would imply.
+\item Compare a lower bound with an inapproximability result. What does each rule out, and what does each leave open?
+\item Pick a theorem in the book and list its hypotheses. Imagine weakening one hypothesis. What part of the conclusion would you expect to fail first?
+\end{enumerate}
+
+\section{Closing perspective}
+The Abacus Medal lineage rewards technical achievements, but its deeper subject is disciplined curiosity. Each winner noticed that a familiar question was being asked in an unhelpful language. The decisive move was often a change of coordinates: represent groups by roots, constraints by a circuit, a conversation by information, a network by a matrix, or a random family by a polynomial.
+
+The chapters that follow are portraits of methods as much as portraits of people. They ask readers to watch for the moment when an obstacle changes shape. That moment is where a proof becomes an algorithm, where an impossibility result becomes a map of the frontier, and where a problem from one field becomes a tool in another.
+
+\section{A closer look at the transitions}
+The first transition is from procedures to resources. Tarjan's algorithms do not merely find connected components; they explain why repeated operations can be cheap. Valiant's counting theory does not merely classify a difficult function; it distinguishes the information in a count from the information in a yes-or-no answer. Once resources are named, apparently vague statements such as ``large,'' ``learnable,'' or ``verifiable'' can be turned into theorems.
+
+The second transition is from resources to representations. A lower bound needs a measure that a machine cannot increase too quickly. An interactive proof needs a transcript whose consistency can be sampled. A quantum algorithm needs a basis in which a hidden period becomes visible. A code needs redundancy whose local checks imply global distance. These are not interchangeable tricks. Each representation is chosen because it makes one desired invariant natural.
+
+The third transition is from representations to communities of ideas. Graph spectra move between combinatorics and numerical linear algebra. Coding moves between reliable communication and proof checking. Approximation hardness moves between complexity and geometry. Equilibrium computation moves between fixed-point theorems and algorithms. A field becomes influential when its objects can be used as a language by another field.
+
+\section{The role of a negative result}
+It is tempting to treat a lower bound or hardness theorem as a wall. A better interpretation is a boundary map. If a circuit lower bound uses monotonicity, then negation is a source of difficulty. If an approximation gap defeats a particular relaxation, then the missing global constraint is a clue. If an equilibrium is PPAD-hard, then a practical system may need to rely on dynamics, approximate equilibria, or a restricted market model.
+
+A boundary map changes the next question. Instead of asking whether every instance can be solved quickly, ask whether the natural instances have a certificate, whether random perturbation helps, whether a promise is justified, or whether a weaker output is sufficient. The award lineage repeatedly shows this move from an impossible universal goal to a useful structured one.
+
+\section{A method for comparing chapters}
+For a disciplined comparison, write four sentences about each chapter. First, name the object: graph, circuit, code, game, protocol, or distribution. Second, name the resource: time, size, information, error, approximation ratio, or mixing time. Third, name the certificate: potential, polynomial, spectral inequality, fixed point, or distance. Fourth, name the failure mode: a tall tree, a hard function, a dishonest transcript, noise, a bottleneck, or an integrality gap.
+
+This exercise prevents a common historical mistake. It is easy to say that all the winners ``found clever algorithms.'' Some instead proved that a model is weak, showed that a task is hard to approximate, or supplied a language in which future algorithms could be designed. The variety is not a departure from the subject; it is the subject.
+
+\section{Exercises in synthesis}
+\begin{enumerate}[label=\textbf{S\arabic*.}]
+\item Pair Tarjan with Braverman. What is the analogue of a representative or low-link value in an information protocol?
+\item Pair Sudan with Wigderson. In each case, what local observation is intended to expose a global inconsistency?
+\item Pair Shor with Spielman. How does a transform or eigenvector make an invisible global pattern measurable?
+\item Pair Khot with Oveis Gharan. Compare a relaxation that exposes an obstruction with a representation that enables a rounding algorithm.
+\item Pair Daskalakis with Valiant. Give one example where existence or statistical learnability does not imply efficient computation.
+\end{enumerate}
+
+The answers need not be unique. The point is to practise translation. Research often begins when a tool from one chapter is recognized as a possible answer to a question from another.
+
+\section{Final historical note}
+The award names and years are stable historical facts, but the research programmes are not finished subjects. Algorithms continue to be adapted to parallel, distributed, private, noisy, and quantum settings. Complexity assumptions are tested against new models. Learning systems change the data distributions they are supposed to model. Sampling methods confront larger state spaces and sharper phase transitions.
+
+That unfinished quality is the most important reason to read a lineage rather than a collection of biographies. Each chapter offers a way of seeing a problem, and each way of seeing leaves a new boundary. The next contribution may not resemble the previous one in vocabulary. It may nevertheless repeat the same deep move: identify what must be remembered, what can be randomized, and what invariant makes a local step globally trustworthy.

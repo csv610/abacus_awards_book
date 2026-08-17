@@ -1,0 +1,91 @@
+\chapter{1990:Alexander A. Razborov}
+\label{chap:razborov}
+\targetchapterspacing
+\index{Razborov, Alexander A.}
+\booknote{The central habit in this chapter is to prove a universal negative: find a quantity that every allowed gate changes only a little, so every small circuit is trapped in a box the target function can escape.}
+
+\section{An Opening Story: The Proof Game}
+Three switches guard a vault door, which opens only when all three are on. You build the obvious controller: two AND gates, one combining switches 1 and 2, the second combining that with switch 3. Done. Now a skeptic enters. ``You found one circuit,'' she says. ``Prove that \emph{no} circuit with a single two-input gate can open the vault.''
+
+A single gate reads at most two switches and ignores the third, so the output cannot react to it---the claim is easy. So she makes it harder: five switches, the door opens exactly when at least three are on, and she wants a certificate that no circuit with, say, seven gates can do the job. No single gate ignores enough inputs, and no obvious trick works. This is the \emph{proof game}: one player claims a rule is easy, the other must rule out \emph{every} circuit that might compute it, including circuits nobody has thought to write down. Alexander Razborov won the 1990 Nevanlinna Prize for winning the hard side of this game for important restricted circuits, proving that natural rules such as ``does this graph contain a large clique?'' need many gates.
+
+\section{The Problem}
+A \emph{Boolean function} is a rule $f\colon\{0,1\}^n\to\{0,1\}$ reading $n$ bits and answering one. Unless stated otherwise, a \emph{Boolean circuit} is a directed acyclic graph whose leaves are the input bits, whose internal nodes are binary AND, OR, and NOT gates, and whose top node is the output. The \emph{size} is the number of gates; the \emph{depth} is the longest path from an input to the output. We will explicitly identify models with unbounded fan-in when they are used.
+
+The question is \emph{prove that a specific function requires many gates.} The asymmetry is brutal: an upper bound is one construction, while a lower bound must defeat \emph{all} circuits in a class---an unbounded set of objects, most never seen. Easy to find clever constructions; hard to show cleverness has a limit.
+
+\section{The World Before}
+
+\noindent\textbf{Counting says hard functions exist.} There are $2^{2^n}$ Boolean functions on $n$ bits---$2^{16}=65{,}536$ for $n=4$, about $10^{308}$ for $n=10$. A circuit of $s$ gates is described by naming a type and wires per gate, leaving roughly $(c\,s)^s$ circuits of size $s$; for $s=2^n/n$ this is far smaller than $2^{2^n}$. So almost all functions need about $2^n/n$ gates: hard functions are the typical case.
+
+\noindent\textbf{But existence is not an example.} The counting argument never names a hard function. ``Most functions are hard'' and ``here is one, with a proof'' are different statements, and for decades nobody could make the second. For explicit functions the best bounds were trivial---roughly enough gates to read the input and nothing more.
+
+\noindent\textbf{The field was rich in upper bounds.} Sorting, multiplying, matching: fast algorithms, each a triumph of construction. The discipline could answer ``how fast can it be done?'' and had almost no tools for ``how slow must it be?'' The temptation was to judge hardness by cleverness---``I could not find a circuit'' is a statement about one person, not a theorem about all circuits.
+
+\noindent\textbf{What was missing: an invariant.} A lower bound needs a measure $\mu(f)$ with two properties: each single gate changes $\mu$ by a controlled amount, so a circuit of $s$ gates leaves $\mu$ inside a controlled range; and the target function sits far outside that range. The creative work is finding a measure that \emph{survives composition of gates}, so composing two gates cannot let it explode.
+
+\section{The New Idea}
+\emph{Step one:} choose a measure every allowed gate changes by a controlled amount. \emph{Step two:} exhibit a target whose measure is unavoidably large. Three moves make this work.
+
+\subsection{Monotone circuits: remove the eraser}
+A function is \emph{monotone} if flipping an input bit from $0$ to $1$ never flips the output from $1$ to $0$; evidence once collected cannot be forgotten. A \emph{monotone circuit} uses only AND and OR gates, no NOT. This sounds mild but removes the most dangerous power of general circuits: \emph{cancellation}. With NOT, a circuit can combine a fact with its negation, $x\wedge\neg x=0$, and erase everything it learned. Monotone circuits must keep what they collect, so a measure of ``how much evidence is held'' can survive the whole computation.
+
+\subsection{Polynomial approximations: the stabilizer}
+Even monotone gates are hard to track exactly. Razborov's key move was to replace each gate's behavior, on carefully chosen test graphs, by a low-complexity combinatorial stand-in---essentially a bounded collection of small sets or terms. The stand-in makes only a controlled number of mistakes at each gate, while the target clique function cannot be approximated accurately by any sufficiently small collection. The whole circuit is therefore trapped between two facts: local approximants are stable under AND and OR, but no small approximant can separate the relevant positive and negative graphs. Approximation is the lever that lets a counting argument reach inside the circuit.
+
+\subsection{The clique bound: a target that resists}
+The flagship target: input a graph on $n$ vertices---one bit per possible edge---and ask whether it contains $k$ vertices all pairwise connected, a $k$-\emph{clique}. This is monotone: adding edges only creates cliques. Razborov's 1985 work gave the first super-polynomial monotone-circuit lower bound for clique. Alon and Boppana later strengthened this line of work to bounds of the form $n^{\Omega(\sqrt{k})}$ over a broad range of $k$. Positive inputs carry huge numbers of incompatible witnesses, while a small circuit's approximant keeps only a limited catalogue, so some graph with no $k$-clique slips through. The conceptual shift is the whole lesson: \emph{an upper bound needs one construction; a lower bound must defeat every construction, so find the invariant all small circuits share.}
+
+\section{How It Works: Worked Examples}
+
+\subsection{No monotone circuit computes parity of three bits}
+Let $p$ be parity of $x_1,x_2,x_3$: output $1$ for an odd number of $1$s. Then
+\[
+p(0,1,0)=1,\qquad p(0,1,1)=0.
+\]
+Flipping $x_3$ from $0$ to $1$ moved the output from $1$ to $0$: an input bit went up and the answer went down. Monotone functions never do that, so parity is not monotone. And every monotone circuit computes a monotone function: input wires are monotone, and AND or OR of monotone functions is monotone. Hence \emph{no} monotone circuit computes parity, of any size. Trivial---yet it teaches the method's point: monotonicity removes the ability to cancel. Parity needs the circuit to remember that two ones cancel, and monotone hardware has no eraser. Nor is the case moot: reachability, matching, and clique are all monotone, and these are exactly what graph circuits are asked to compute.
+
+\subsection{AND of three bits: two models, and a measure that fails}
+First, the model matters. In an unbounded-fan-in model, one 3-input AND gate computes $x_1\wedge x_2\wedge x_3$ in size $1$, depth $1$. In the binary model used by default here, the same function needs $(x_1\wedge x_2)\wedge x_3$: size $2$, depth $2$.
+
+Now try the most naive measure: $\mu(f)=$ number of assignments where $f$ outputs $1$. Two tiny circuits show it cannot work. The four-way OR $x_1\vee x_2\vee x_3\vee x_4$ takes three binary gates yet outputs $1$ on $15$ of $16$ assignments: tiny circuit, huge $\mu$. The function $x_1\wedge(x_2\vee x_3)$ takes two gates yet outputs $1$ on only $3$ of $8$. Same gate counts, opposite measures. The reason is composition: for $h$ and $g$,
+\[
+\mu(h\vee g)=\mu(h)+\mu(g)-\mu(h\wedge g),
+\]
+and the correction $\mu(h\wedge g)$ is a correlation no gate-local rule can predict. A chain of OR gates can keep $\mu$ small by exploiting overlaps, or inflate it by avoiding them. The measure does not respect composition, so it proves nothing---real measures must be \emph{provably stable} under each gate, not merely plausible.
+
+\section{The Mathematics in Brief}
+The precise objects first. A \emph{Boolean circuit} with $n$ inputs is a directed acyclic graph whose leaves are the input bits and whose internal nodes are AND, OR, and NOT gates, with one designated output; \emph{size} is the number of gates and \emph{depth} is the longest input-to-output path. A polynomial-size circuit family defines the nonuniform class $\mathrm{P}/\mathrm{poly}$, the circuit analogue of polynomial-time computation. Proving that an explicit language in $\mathrm{NP}$ requires super-polynomial general circuits would show $\mathrm{NP}\not\subseteq\mathrm{P}/\mathrm{poly}$, and therefore $\mathrm{P}\ne\mathrm{NP}$. Removing NOT gates and keeping only AND/OR gives \emph{monotone circuits}; a \emph{monotone function} satisfies $f(x)\le f(y)$ whenever $x\le y$ coordinatewise. Keeping NOT but fixing the depth at a constant, requiring polynomial size, and letting AND/OR gates read unboundedly many inputs gives $\mathrm{AC}^{0}$. The headline theorem:
+
+\medskip
+\noindent\emph{Razborov (1985), with later strengthening by Alon--Boppana (1987)} \cite{razborov-monotone,alon-boppana}. Razborov proved a super-polynomial lower bound for monotone circuits deciding whether an $n$-vertex graph contains a suitable $k$-clique. Later work established the more general form $n^{\Omega(\sqrt{k})}$ over a broad range of $k$; for $k\approx n^{1/3}$ this outgrows every fixed power of $n$.
+
+The engine is Razborov's \emph{method of approximation}, not a generic low-degree-polynomial substitution. On a carefully selected collection of positive and negative graphs, replace the output of each gate by a bounded-complexity monotone approximant, such as a short DNF built from small vertex sets. The approximant for each gate makes only a controlled number of errors, and the gate rules ensure that these errors cannot disappear without being charged to earlier gates. At the output, however, every small approximant must confuse a graph containing a genuine $k$-clique with a graph whose largest clique is much smaller. The local and global error bounds contradict one another unless the original circuit has many gates. Low-degree polynomial approximation is an important related technique in other circuit lower bounds, but it should not be presented as the mechanism of this monotone clique proof.
+
+The general question---an explicit function needing super-polynomial \emph{general} circuits---remains open: negation reintroduces cancellation, and $x\wedge\neg x=0$ destroys every known measure.
+
+\section{Limits and Modern Views}
+Monotone circuits are a restricted model, and the restriction does the work. General circuits can cancel, forget, and coordinate globally; the measures that defeat monotone circuits evaporate at the first NOT gate. Threshold gates---comparing a weighted sum $\sum_i w_i x_i$ to a threshold---add a power none of the classical invariants controls. No one has exhibited an explicit function provably requiring super-polynomial general circuits, and Razborov and Rudich's \emph{natural proofs} barrier explains part of why: assuming strong pseudorandom functions exist, no lower-bound property that is both sufficiently constructive and sufficiently large can yield the desired general-circuit lower bounds. Many promising techniques cannot resolve $\textsf{P}$ vs.\ $\textsf{NP}$; a breakthrough must be unnatural in a precise technical sense.
+
+What survived is the method. The invariant-and-approximant pattern now appears in proof complexity (Razborov's own work on the pigeonhole principle and bounded arithmetic bounds how concisely some statements can be proved \cite{razborov-circuit}), pseudorandomness, communication complexity, and learning theory, where a ``small approximator'' is what an efficient learner must find. The 1990 Nevanlinna Prize honored the pattern, not just the clique bound \cite{razborov-monotone}: \emph{to prove a machine cannot be small, find the quantity every small machine must respect, then find a task that violates it.}
+
+\section{Exercises and Self-Study Guide}
+\begin{enumerate}[label=\textbf{E\arabic*.}]
+\item Compare a balanced formula for AND of $n=8$ variables with a chain formula. Give the exact size and depth of each.
+\hint{Draw both trees: a balanced binary AND tree has depth $\log_2 8=3$; a chain has depth $7$; both use $7$ gates.}
+\item Prove that the parity function $p(x_1,x_2,x_3)$ is not monotone, and conclude no monotone circuit computes it.
+\hint{Find two inputs differing in one bit where $p$ drops from $1$ to $0$; every AND/OR-only circuit computes a monotone function.}
+\item Apply a random restriction to the majority-of-three DNF $f=(x_1x_2)\vee(x_2x_3)\vee(x_1x_3)$ by hand: first set $x_2=1$, then $x_2=0$. Which terms die, and what function remains?
+\hint{Setting $x_2=1$ turns $x_1x_2$ and $x_2x_3$ into $x_1$ and $x_3$; setting $x_2=0$ kills all three terms.}
+\item Explain why a lower bound for monotone circuits says nothing directly about general circuits, using AND of three bits as a test case.
+\hint{The same function is cheaper in a stronger model: one 3-input AND beats any binary-circuit bound, and a NOT gate adds powers monotone circuits lack.}
+\item Compute $\mu(f)$, the number of assignments where $f$ outputs $1$, for $x_1\vee x_2\vee x_3\vee x_4$ and for $x_1\wedge(x_2\vee x_3)$. Why do these numbers rule out ``small circuit implies small $\mu$''?
+\hint{The four-way OR outputs $1$ on $15$ of $16$ assignments; the two-gate function on $3$ of $8$. Same gate counts, opposite measures.}
+\item Prove that no circuit with a single two-input AND, OR, or NOT gate computes majority of three bits.
+\hint{A one-gate circuit ignores some input $x_j$; pick two inputs differing only in $x_j$ where majority flips, e.g.\ $(0,1,0)$ vs.\ $(0,1,1)$.}
+\item Read a published lower-bound proof (Razborov's monotone clique bound, or an exposition of it) and mark every place the machine model is used.
+\hint{Ask the four questions: what is the model, what quantity is small for every small machine, why does it survive each gate, where does the target violate it.}
+\end{enumerate}
+
+\booknote{A final exercise in judgment: whenever you read that a circuit class cannot compute a function, name the forbidden power---cancellation, global coordination, thresholds---and ask which future gadget would make the old measure fail. Naming the next forbidden power is how lower bounds progress.}
+\clearpage

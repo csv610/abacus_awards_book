@@ -1,0 +1,124 @@
+\documentclass[11pt,oneside]{book}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{makeidx}
+\usepackage{url}
+\usepackage{cite}
+
+\definecolor{deepblue}{RGB}{20,55,110}
+\hypersetup{colorlinks=true,linkcolor=deepblue,citecolor=deepblue,urlcolor=deepblue,pdftitle={The Abacus Medal: Human Ideas in Mathematical Information Sciences},pdfauthor={}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\setlength{\headheight}{14pt}
+\setcounter{tocdepth}{0}
+\makeindex
+
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{remark}[definition]{Remark}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\booknote}[1]{\begin{quote}\small\textit{#1}\end{quote}}
+\newcommand{\expandedchapterspacing}{\renewcommand{\baselinestretch}{1.35}\selectfont}
+\newcommand{\longchapterspacing}{\renewcommand{\baselinestretch}{1.8}\selectfont}
+\newcommand{\targetchapterspacing}{\renewcommand{\baselinestretch}{2.5}\selectfont}
+\newcommand{\normalchapterspacing}{\renewcommand{\baselinestretch}{1}\selectfont}
+\newcommand{\hint}[1]{\newline\small\textit{Hint: #1}}
+
+\title{The Abacus Medal\\[0.4em]\large Human Intuition and Mathematical Exploration in Information Sciences}
+\author{}
+\date{2026}
+
+\begin{document}
+\frontmatter
+\maketitle
+\chapter*{How to Read This Book}
+The IMU Abacus Medal recognizes outstanding contributions to the mathematical aspects of information sciences. This book is not a catalogue of medals, affiliations, or publication lists. It is a set of invitations to think: what question was hiding inside a technical obstacle, what representation made the obstacle visible, and how can a student learn to search for the next representation?
+
+The official IMU list names Shayan Oveis Gharan as the 2026 recipient and Mark Braverman as the 2022 recipient. The medal continues the Rolf Nevanlinna Prize, which was awarded from 1982 through 2018. This book therefore covers the complete lineage of winners from 1982 onward. There was no 1992 award: the prize is presented every four years, so the sequence moves from 1990 to 1994. Each chapter moves between a human research problem and the mathematics that made progress possible. Historical statements and award descriptions are tied to the sources in the bibliography; formulas are developed as working tools rather than decorative notation.
+
+No specialist background is assumed. Every chapter should first say what its objects are, what question is being asked about them, and why the question is difficult. Technical words are introduced only after the underlying idea has appeared in an ordinary example; notation then serves as a compact record of an idea the reader has already met. The exercises are intended to reinforce that progression rather than test unexplained vocabulary.
+
+Every chapter follows the same eight-part arc, so the book can be read one chapter at a time or dipped into in any order. A brief note in italic opens the chapter naming the single habit of mind its subject rewards. Then: an opening story that meets the ideas in an ordinary situation; the problem, stated in everyday terms before any formalism; the world before, showing what was known and what blocked the field; the new idea, the representation or reframing that made the obstacle visible; worked examples, where the machinery is actually run on small inputs; the mathematics in brief, a compact record of definitions and claims with the reason each is true; and limits and modern views, connecting the result to what came after. Each chapter closes with a second italic note, an exercise in judgment that asks the reader to reuse the chapter's habit on a new situation.
+
+The exercises and self-study guide at the end of every chapter ask you to verify the worked examples yourself, to vary them, and to notice where an argument relies on an assumption. Each exercise is followed by a small-print hint, so the book works in both directions: hide the hints to test yourself fully, or keep them visible to keep moving. The most useful way to read a chapter is actively. Before a subsection explains a theorem, pause and ask: what is the input, what would count as an answer, and what information would a direct method have to remember? Only then ask what representation makes the work smaller. Use the exercises to turn admiration into practice.
+
+\tableofcontents
+\mainmatter
+\include{chapters/robert_endre_tarjan}
+\include{chapters/leslie_valiant}
+\include{chapters/alexander_razborov}
+\include{chapters/avi_wigderson}
+\include{chapters/peter_shor}
+\include{chapters/madhu_sudan}
+\include{chapters/jon_kleinberg}
+\include{chapters/daniel_spielman}
+\include{chapters/subhash_khot}
+\include{chapters/constantinos_daskalakis}
+\include{chapters/mark_braverman}
+\include{chapters/shayan_oveis_gharan}
+\backmatter
+\chapter*{Sources and Further Reading}
+\addcontentsline{toc}{chapter}{Sources and Further Reading}
+\begin{thebibliography}{99}
+\bibitem{imu2022} International Mathematical Union, ``Abacus Medal 2022: Mark Braverman,'' official award page, 2022. \url{https://www.mathunion.org/imu-awards/imu-abacus-medal/abacus-medal-2022}.
+\bibitem{imu2026} International Mathematical Union, ``Abacus Medal 2026: Shayan Oveis Gharan,'' official award page, 2026. \url{https://www.mathunion.org/imu-awards/imu-abacus-medal/abacus-medal-2026}.
+\bibitem{imu-history} International Mathematical Union, ``Rolf Nevanlinna Prize -- Prestigious Award in Mathematical Information Sciences,'' official winners list and history. \url{https://www.mathunion.org/imu-awards/rolf-nevanlinna-prize}.
+\bibitem{braverman14} M. Braverman and A. Rao, ``Information equals amortized communication,'' \emph{Proceedings of the 55th IEEE Symposium on Foundations of Computer Science}, 2014.
+\bibitem{braverman11} M. Braverman and A. Moitra, ``An information complexity approach to extended formulations,'' \emph{Proceedings of the 43rd ACM Symposium on Theory of Computing}, 2011.
+\bibitem{braverman15} M. Braverman, ``Interactive information complexity,'' \emph{Foundations and Trends in Theoretical Computer Science}, 2015.
+\bibitem{christofides76} N. Christofides, ``Worst-case analysis of a new heuristic for the travelling salesman problem,'' technical report, Graduate School of Industrial Administration, Carnegie--Mellon University, 1976.
+\bibitem{karlin-tsp} A. R. Karlin, N. Klein, and S. Oveis Gharan, ``A (slightly) improved approximation algorithm for metric TSP,'' 2020. arXiv:2007.01409.
+\bibitem{asadi20} A. Asadi, S. Oveis Gharan, and A. Saberi, ``Mixing time of the Glauber dynamics for strongly log-concave distributions,'' \emph{Proceedings of the 61st IEEE Symposium on Foundations of Computer Science}, 2020.
+\bibitem{anari19} N. Anari, K. Liu, S. Oveis Gharan, and C. Vinzant, ``Log-concave polynomials II: High-dimensional walks and an FPRAS for counting bases of a matroid,'' \emph{Proceedings of the 60th IEEE Symposium on Foundations of Computer Science}, 2019.
+\bibitem{anari20} N. Anari, K. Liu, S. Oveis Gharan, and C. Vinzant, ``Log-concave polynomials III: Mason's conjecture for independent sets of matroids,'' \emph{Combinatorica}, 2020.
+\bibitem{anari21} N. Anari, K. Liu, S. Oveis Gharan, and C. Vinzant, ``Log-concave polynomials IV: Exchange properties, tight mixing times, and near-linear time sampling of forests,'' \emph{Proceedings of the 54th ACM Symposium on Theory of Computing}, 2022.
+\bibitem{spielman12} D. A. Spielman and S.-H. Teng, ``Spectral partitioning works: Planar graphs and finite element meshes,'' \emph{Linear Algebra and its Applications}, 2007.
+\bibitem{mcmullen72} P. McMullen, ``The maximum numbers of faces of a convex polytope,'' \emph{Mathematica}, 1970.
+\bibitem{tarjan-union} R. E. Tarjan, ``Efficiency of a good but not linear set union algorithm,'' \emph{Journal of the ACM}, 1975.
+\bibitem{tarjan-dfs} R. E. Tarjan, ``Depth-first search and linear graph algorithms,'' \emph{SIAM Journal on Computing}, 1972.
+\bibitem{valiant-counting} L. G. Valiant, ``The complexity of computing the permanent,'' \emph{Theoretical Computer Science}, 1979.
+\bibitem{valiant-learning} L. G. Valiant, ``A theory of the learnable,'' \emph{Communications of the ACM}, 1984.
+\bibitem{razborov-monotone} A. A. Razborov, ``Lower bounds on the monotone complexity of some Boolean functions,'' \emph{Soviet Mathematics--Doklady}, 31 (1985), 354--357.
+\bibitem{alon-boppana} N. Alon and R. B. Boppana, ``The monotone complexity of Boolean functions,'' \emph{Combinatorica}, 7 (1987), 1--22.
+\bibitem{razborov-circuit} A. A. Razborov, ``Unprovability of lower bounds on the circuit size in certain fragments of bounded arithmetic,'' \emph{Izvestiya: Mathematics}, 1995.
+\bibitem{wigderson-interactive} S. Goldwasser, S. Micali, and C. Rackoff, ``The knowledge complexity of interactive proof systems,'' \emph{SIAM Journal on Computing}, 1989.
+\bibitem{wigderson-zk} O. Goldreich, S. Micali, and A. Wigderson, ``Proofs that yield nothing but their validity or all languages in NP have zero-knowledge proof systems,'' \emph{Journal of the ACM}, 1991.
+\bibitem{shor-factoring} P. W. Shor, ``Algorithms for quantum computation: discrete logarithms and factoring,'' \emph{Proceedings of the 35th IEEE Symposium on Foundations of Computer Science}, 1994.
+\bibitem{shor-error} P. W. Shor, ``Scheme for reducing decoherence in quantum computer memory,'' \emph{Physical Review A}, 1995.
+\bibitem{sudan-list} M. Sudan, ``Decoding of Reed Solomon codes beyond the error-correction bound,'' \emph{Journal of Complexity}, 1997.
+\bibitem{sudan-pcp} S. Arora and S. Safra, ``Probabilistic checking of proofs: a new characterization of NP,'' \emph{Journal of the ACM}, 1998.
+\bibitem{kleinberg-hits} J. M. Kleinberg, ``Authoritative sources in a hyperlinked environment,'' \emph{Journal of the ACM}, 1999.
+\bibitem{kleinberg-smallworld} J. M. Kleinberg, ``The small-world phenomenon: an algorithmic perspective,'' \emph{Proceedings of the 32nd ACM Symposium on Theory of Computing}, 2000.
+\bibitem{kleinberg-bursts} J. Kleinberg, ``Bursty and hierarchical structure in streams,'' \emph{Proceedings of the 8th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 2002.
+\bibitem{spielman-smoothed} D. A. Spielman and S.-H. Teng, ``Smoothed analysis of algorithms: why the simplex algorithm usually takes polynomial time,'' \emph{Journal of the ACM}, 2004.
+\bibitem{spielman-laplacian} D. A. Spielman and S.-H. Teng, ``Nearly-linear time algorithms for graph partitioning, graph sparsification, and solving linear systems,'' \emph{Proceedings of the 36th ACM Symposium on Theory of Computing}, 2004.
+\bibitem{spielman-codes} D. A. Spielman, ``Linear-time encodable and decodable error-correcting codes,'' \emph{Proceedings of the 27th ACM Symposium on Theory of Computing}, 1996.
+\bibitem{khot-unique} S. Khot, ``On the power of unique 2-prover 1-round games,'' Proceedings of the 34th ACM Symposium on Theory of Computing, 2002.
+\bibitem{khot-hardness} S. Khot, G. Kindler, E. Mossel, and R. O'Donnell, ``Optimal inapproximability results for MAX-CUT and other 2-variable CSPs?,'' \emph{SIAM Journal on Computing}, 2007.
+\bibitem{goemans-williamson} M. X. Goemans and D. P. Williamson, ``Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming,'' \emph{Journal of the ACM}, 42(6), 1115--1145, 1995.
+\bibitem{hastad-optimal} J. H\aa stad, ``Some optimal inapproximability results,'' \emph{Journal of the ACM}, 48(4), 798--859, 2001.
+\bibitem{raghavendra-csp} P. Raghavendra, ``Optimal algorithms and inapproximability results for every CSP?,'' \emph{Proceedings of the 40th ACM Symposium on Theory of Computing}, 2008.
+\bibitem{dkkms-2to2} I. Dinur, S. Khot, G. Kindler, D. Minzer, and M. Safra, ``Towards a proof of the 2-to-1 games conjecture?,'' \emph{Proceedings of the 50th ACM Symposium on Theory of Computing}, 376--389, 2018.
+\bibitem{kms-2to2} S. Khot, D. Minzer, and M. Safra, ``Small set expansion in the shortcode graph and the 2-to-2 conjecture,'' arXiv:1804.08662, 2018.
+\bibitem{daskalakis-nash} C. Daskalakis, P. W. Goldberg, and C. H. Papadimitriou, ``The complexity of computing a Nash equilibrium,'' \emph{SIAM Journal on Computing}, 2009.
+\bibitem{daskalakis-markets} C. Daskalakis, A. Deckelbaum, and C. Tzamos, ``Mechanism design via optimal transport,'' \emph{Proceedings of the 14th ACM Conference on Electronic Commerce}, 2013.
+\end{thebibliography}
+\printindex
+\end{document}
