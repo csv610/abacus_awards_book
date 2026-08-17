@@ -1,0 +1,235 @@
+\documentclass[11pt]{book}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\title{User Guide for the C++23 Chapter Examples}
+\author{Abacus Awards Book}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter*{How to Use This Guide}
+Each program in the \texttt{examples} directory is a small C++23 demonstration.
+The programs are intended to make the central idea of each chapter visible.
+They do not prove the full research theorems.
+
+Compile a program with:
+\begin{verbatim}
+c++ -std=c++23 -O2 -Wall -Wextra -pedantic examples/tarjan.cpp -o /tmp/tarjan
+/tmp/tarjan
+\end{verbatim}
+
+The same command works for every \texttt{.cpp} file.
+
+\chapter{Robert Endre Tarjan}
+\section{What the code does}
+\texttt{tarjan.cpp} implements disjoint-set union, bridge detection, and Tarjan's strongly connected component algorithm.
+
+\section{Connection to the theory}
+Union--find stores representatives of connected components. Path compression and union by rank keep the trees shallow. The DFS code stores discovery times and low-link values. These are the certificates used to identify bridges and strongly connected components.
+
+\section{Steps followed}
+The program first joins several sets and tests whether two vertices have the same representative. It then runs DFS on an undirected graph and prints bridges. Finally it runs the directed low-link algorithm and counts the strongly connected components.
+
+\section{Generalization}
+Add articulation points, multigraph support, iterative DFS, dynamic connectivity, or a benchmark comparing naive search with union--find.
+
+\section{Limitations}
+The recursive DFS may overflow the call stack on a very large graph. The implementation also assumes simple graphs in the bridge example.
+
+\chapter{Leslie Valiant}
+\section{What the code does}
+\texttt{valiant.cpp} counts perfect matchings by recursion and computes the same count with Ryser's formula for the permanent.
+
+\section{Connection to the theory}
+The permanent counts perfect matchings without cancellation. This illustrates the difference between deciding whether a matching exists and counting all matchings.
+
+\section{Steps followed}
+The program represents a bipartite graph as a zero--one matrix. It tries unused columns recursively, then evaluates every nonempty column subset using Ryser's formula. The two answers are compared.
+
+\section{Generalization}
+Add weighted matrices, larger dynamic-programming instances, approximate counting, or small reductions from Boolean formulas to counting problems.
+
+\section{Limitations}
+Both methods are exponential. They demonstrate the counting idea but cannot handle the large instances that motivate \#P theory.
+
+\chapter{Alexander Razborov}
+\section{What the code does}
+\texttt{razborov.cpp} tests whether a Boolean function is monotone and shows that three-bit parity is not monotone.
+
+\section{Connection to the theory}
+AND and OR circuits compute monotone functions. Parity changes from one to zero when an input changes from zero to one, so no monotone circuit can compute it.
+
+\section{Steps followed}
+The program constructs the truth table of parity, checks every coordinatewise ordered pair of inputs, and reports the violating pair.
+
+\section{Generalization}
+Enumerate small monotone circuits, study clique functions, or build simplified approximants from small vertex sets.
+
+\section{Limitations}
+The program demonstrates a simple obstruction. It does not implement Razborov's approximation method or prove an asymptotic circuit lower bound.
+
+\chapter{Avi Wigderson}
+\section{What the code does}
+\texttt{wigderson.cpp} compares a five-cycle with a triangle having a two-edge tail. It uses degree sequences as a toy verifier and also performs brute-force graph isomorphism.
+
+\section{Connection to the theory}
+Graph non-isomorphism has a short interactive proof. Random relabeling hides which graph was selected when the two graphs are isomorphic.
+
+\section{Steps followed}
+The program selects one graph, relabels it conceptually, uses an easy invariant to classify it, and then checks the final answer by trying all vertex permutations.
+
+\section{Generalization}
+Add a real commitment scheme, repeated soundness tests, graph pairs with equal degree sequences, and a simulator for the zero-knowledge transcript.
+
+\section{Limitations}
+Degree sequences do not solve graph isomorphism in general. The brute-force check is factorial in the number of vertices, and the program is not a complete implementation of IP equals PSPACE.
+
+\chapter{Peter W. Shor}
+\section{What the code does}
+\texttt{shor.cpp} computes the order of 7 modulo 15 and uses it to recover the factors 3 and 5.
+
+\section{Connection to the theory}
+Shor's algorithm reduces factoring to order finding. If the order is even and the middle power is not minus one, two greatest-common-divisor computations reveal factors.
+
+\section{Steps followed}
+The program performs modular exponentiation, finds the first exponent giving one, checks the order conditions, and computes the two gcd values.
+
+\section{Generalization}
+Add a state-vector simulator, the quantum Fourier transform, measurement sampling, continued fractions, and retries for bad choices of the base.
+
+\section{Limitations}
+The current program performs order finding classically. It demonstrates the number theory, not quantum interference or quantum error correction.
+
+\chapter{Madhu Sudan}
+\section{What the code does}
+\texttt{sudan.cpp} lists all degree-one polynomials that agree with a received word in at least two positions.
+
+\section{Connection to the theory}
+List decoding keeps every plausible message instead of forcing a single guess. Interpolation and the root bound make the list searchable.
+
+\section{Steps followed}
+The program interpolates a line through every pair of received points, counts its agreements, removes duplicates, and prints the surviving candidates.
+
+\section{Generalization}
+Construct a bivariate interpolation polynomial $Q(x,y)$, factor it, add multiplicities, and implement the Guruswami--Sudan algorithm.
+
+\section{Limitations}
+The example uses real-number arithmetic and degree-one messages. Exact finite-field arithmetic and higher-degree interpolation require additional code.
+
+\chapter{Jon Kleinberg}
+\section{What the code does}
+\texttt{kleinberg.cpp} computes HITS authority and hub scores and performs greedy routing on a small grid with a shortcut.
+
+\section{Connection to the theory}
+HITS turns mutual reinforcement into matrix iteration. The small-world model studies when a local navigator can find a short path using distance-biased shortcuts.
+
+\section{Steps followed}
+The program alternates authority and hub updates. It then moves greedily toward a target, using a shortcut only when the shortcut source is reached.
+
+\section{Generalization}
+Generate random $n$ by $n$ grids, vary the shortcut exponent $r$, run many trials, and measure the average routing length. Add the burst-state automaton.
+
+\section{Limitations}
+The grid example is tiny and deterministic. It does not reproduce the asymptotic routing theorem or model real social networks.
+
+\chapter{Daniel Spielman}
+\section{What the code does}
+\texttt{spielman.cpp} computes graph energy and solves a small pinned Laplacian system with conjugate gradient.
+
+\section{Connection to the theory}
+The Laplacian converts a graph into an energy quadratic form. Small eigenvalues describe weak connections, and iterative solvers use the matrix structure to avoid dense elimination.
+
+\section{Steps followed}
+The program builds the path Laplacian, evaluates $x^{\mathsf T}Lx$, pins one vertex to remove the constant-vector nullspace, and runs conjugate gradient.
+
+\section{Generalization}
+Add sparse matrices, preconditioners, effective-resistance sampling, spectral sparsification, and experiments on random graphs.
+
+\section{Limitations}
+The solver is dense and intended for small matrices. It is not a nearly-linear-time implementation of Spielman--Teng solvers.
+
+\chapter{Subhash Khot}
+\section{What the code does}
+\texttt{khot.cpp} represents vertices by vectors, rounds them with random hyperplanes, and samples the Goemans--Williamson ratio.
+
+\section{Connection to the theory}
+Semidefinite relaxations replace labels by vectors. A random hyperplane converts vector angles into a cut, connecting the SDP value to an approximation ratio.
+
+\section{Steps followed}
+The program creates a small vector instance, samples random directions, counts crossing edges, and evaluates the theoretical ratio for many angles.
+
+\section{Generalization}
+Generate Unique Games instances, implement a small SDP solver, compare completeness and soundness, and test different rounding rules.
+
+\section{Limitations}
+The code demonstrates rounding, not Khot's hardness reduction or the Unique Games Conjecture. A finite experiment cannot verify an NP-hardness theorem.
+
+\chapter{Constantinos Daskalakis}
+\section{What the code does}
+\texttt{daskalakis.cpp} prints the matching-pennies equilibrium and follows a small implicit path.
+
+\section{Connection to the theory}
+Nash equilibrium is guaranteed by a fixed-point theorem, while PPAD describes search problems whose solution is guaranteed by a parity argument.
+
+\section{Steps followed}
+The program records the mixed equilibrium, represents successor information as a circuit-like array, and follows the path to its other endpoint.
+
+\section{Generalization}
+Implement Lemke--Howson, best-response dynamics, approximate equilibria, and an END-OF-LINE instance generator.
+
+\section{Limitations}
+The path is explicitly listed, so it is not a hard implicit PPAD instance. The program does not implement the equilibrium hardness reduction.
+
+\chapter{Mark Braverman}
+\section{What the code does}
+\texttt{braverman.cpp} computes binary entropy, mutual information for a noisy bit, and the information cost of a simple AND protocol.
+
+\section{Connection to the theory}
+Information complexity charges a protocol for uncertainty removed from the parties' inputs, rather than only counting transmitted symbols.
+
+\section{Steps followed}
+The program evaluates $H(p)$, computes $I(X;Z)=1-H(p)$, and evaluates $h(\delta)+\delta$ for the asymmetric AND protocol.
+
+\section{Generalization}
+Represent protocols as transcript trees, calculate internal and external information cost, simulate public-coin compression, and compare one copy with many independent copies.
+
+\section{Limitations}
+The examples use known distributions and exact arithmetic formulas. They do not implement interactive protocol compression or a general direct-sum proof.
+
+\chapter{Shayan Oveis Gharan}
+\section{What the code does}
+\texttt{shayan\_oveis\_gharan.cpp} enumerates the three spanning trees of a triangle, computes edge marginals, and verifies the matrix-tree determinant.
+
+\section{Connection to the theory}
+The spanning-tree polynomial stores a huge family in one algebraic object. Derivatives give edge marginals, while a Laplacian minor gives the total number of trees.
+
+\section{Steps followed}
+The program lists trees, counts appearances, computes marginal probabilities, and evaluates the determinant of a reduced Laplacian.
+
+\section{Generalization}
+Add weighted graphs, random spanning-tree sampling, stable or strongly log-concave generating polynomials, Markov-chain mixing, and Christofides-style TSP rounding.
+
+\section{Limitations}
+The triangle is too small to show rapid mixing or the $3/2-\varepsilon$ TSP improvement. The determinant routine is a teaching implementation, not a numerically robust sparse solver.
+
+\chapter{The Complete Lineage}
+\section{What the code does}
+\texttt{all\_winners.cpp} stores the winners and years, prints the lineage, and searches for a winner by year.
+
+\section{Connection to the theory}
+The overview chapter treats the award history as structured data. A table can be queried, grouped, and extended just like the mathematical representations used in the other chapters.
+
+\section{Steps followed}
+The program constructs a vector of records, prints every record, and performs a lookup for a selected year.
+
+\section{Generalization}
+Load the data from CSV or JSON, attach themes and references, group winners by resource or method, and generate timelines automatically.
+
+\section{Limitations}
+The program does not verify historical facts. It only reports the data supplied to it; the data must be checked against authoritative sources.
+
+\chapter*{Final Warning}
+These programs verify small calculations and expose mechanisms. They cannot, by themselves, prove asymptotic lower bounds, complexity conjectures, cryptographic security, or the full published theorems.
+
+\end{document}
