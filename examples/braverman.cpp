@@ -3,8 +3,11 @@
 #include <iostream>
 #include <vector>
 
-// OBJECTIVE: Show three small information-complexity ideas: binary entropy,
-// information surviving a noisy channel, and a clearly labeled toy protocol cost.
+// STUDENT OBJECTIVE
+// Learn three quantities in bits: entropy, information surviving noise, and a
+// toy protocol cost. The program prints values for simple probabilities so you
+// can see that a fair bit has maximum uncertainty and noise destroys information.
+// The final cost is a teaching formula, not a complete protocol theorem.
 
 // H(p) is the entropy of a bit that is 1 with probability p.
 // Entropy is measured in bits because we use log base 2.

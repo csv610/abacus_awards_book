@@ -2,8 +2,10 @@
 #include <string>
 #include <vector>
 
-// OBJECTIVE: Treat the award history as searchable data. Store each year and
-// winner, print the records, and find the winner for a requested year.
+// STUDENT OBJECTIVE
+// Learn how a small table of records can be stored, printed, and searched.
+// Input: a year. Output: the matching winner, or "not found".
+// This example treats history as data; it does not verify historical facts.
 
 std::string find_winner(const std::vector<std::pair<int, std::string>>& winners, int year) {
     for (const auto& [y, name] : winners) if (y == year) return name;

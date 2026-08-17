@@ -1,8 +1,11 @@
 #include <iostream>
 #include <vector>
 
-// OBJECTIVE: Check monotonicity of a Boolean truth table and show the simple
-// parity obstruction to computing parity with only AND and OR gates.
+// STUDENT OBJECTIVE
+// Learn to test whether a Boolean function is monotone: changing any input
+// from 0 to 1 must never change the output from 1 to 0. The program checks a
+// complete small truth table and finds parity's violating pair. This illustrates
+// one obstruction, not Razborov's full asymptotic circuit lower bound.
 
 bool parity(const std::vector<int>& x) {
     int ones = 0; for (int bit : x) ones += bit;

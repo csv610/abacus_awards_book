@@ -2,8 +2,11 @@
 #include <iostream>
 #include <vector>
 
-// OBJECTIVE: Build a small Laplacian-style linear system, compute graph energy,
-// and solve the system with the conjugate-gradient iteration.
+// STUDENT OBJECTIVE
+// Learn why a graph Laplacian represents energy and how conjugate gradient
+// solves a small linear system using matrix-vector products. The output gives
+// an energy and an approximate solution. The dense toy solver is not a
+// nearly-linear-time Spielman--Teng implementation.
 
 double dot(const std::vector<double>& a, const std::vector<double>& b) {
     double result = 0; for (size_t i = 0; i < a.size(); ++i) result += a[i] * b[i]; return result;

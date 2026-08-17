@@ -4,8 +4,11 @@
 #include <random>
 #include <vector>
 
-// OBJECTIVE: Represent a MAX-CUT instance by vectors, round the vectors with
-// random hyperplanes, and observe the resulting cut value and ratio.
+// STUDENT OBJECTIVE
+// Learn the basic rounding step for a vector relaxation of MAX-CUT. Each vertex
+// has a vector; a random line divides the vectors into two sides of a cut.
+// The output is an average cut value and the Goemans--Williamson ratio formula.
+// This is not Khot's hardness reduction or a general SDP solver.
 
 struct Point { double x, y; };
 double dot(Point a, Point b) { return a.x*b.x + a.y*b.y; }

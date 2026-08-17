@@ -2,8 +2,11 @@
 #include <numeric>
 #include <vector>
 
-// OBJECTIVE: Demonstrate the classical number-theory part of Shor's method:
-// find an order modulo 15 and use that order to recover factors 3 and 5.
+// STUDENT OBJECTIVE
+// Learn the classical reduction at the center of Shor's factoring algorithm.
+// The program finds the smallest r with a^r = 1 (mod n), then uses r to obtain
+// nontrivial factors of 15. It does not simulate a quantum computer or Fourier
+// sampling; the order is found by a classical loop.
 
 int mod_pow(int base, int exponent, int modulus) {
     int result = 1;

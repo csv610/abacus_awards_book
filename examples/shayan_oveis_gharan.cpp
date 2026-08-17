@@ -2,8 +2,11 @@
 #include <cmath>
 #include <vector>
 
-// OBJECTIVE: Count the spanning trees of a triangle in two ways: enumerate
-// them directly and verify the count with a reduced Laplacian determinant.
+// STUDENT OBJECTIVE
+// Learn the matrix-tree idea on the smallest useful graph. The program lists
+// every spanning tree of a triangle, computes edge frequencies, and checks the
+// total with a reduced Laplacian determinant. It does not implement the later
+// sampling, mixing, or TSP results associated with the research program.
 
 double determinant(std::vector<std::vector<double>> a) {
     double result = 1;

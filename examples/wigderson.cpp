@@ -4,8 +4,11 @@
 #include <random>
 #include <vector>
 
-// OBJECTIVE: Show how graph relabeling hides a graph's vertex names, then use
-// brute force to check isomorphism on a very small pair of graphs.
+// STUDENT OBJECTIVE
+// Learn the difference between vertex labels and graph structure. The program
+// relabels a graph, compares a quick degree invariant, and tries all vertex
+// permutations to test isomorphism. The brute-force method is only practical
+// for tiny graphs; it is not a general interactive proof or zero-knowledge system.
 
 std::vector<int> degree_sequence(const std::vector<std::pair<int, int>>& edges, int n) {
     std::vector<int> d(n);

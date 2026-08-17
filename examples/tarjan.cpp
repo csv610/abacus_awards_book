@@ -2,8 +2,11 @@
 #include <stack>
 #include <vector>
 
-// OBJECTIVE: Demonstrate three graph tools associated with Tarjan's work:
-// disjoint-set union, bridge detection, and strongly connected components.
+// STUDENT OBJECTIVE
+// Learn three graph operations. Union-find answers whether vertices are in the
+// same component; bridge detection finds edges whose removal disconnects a
+// graph; SCC detection groups mutually reachable directed vertices. The sample
+// graphs are small so the DFS state can be inspected easily.
 
 struct DSU {
     std::vector<int> p, rank;

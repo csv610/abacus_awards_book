@@ -3,8 +3,11 @@
 #include <queue>
 #include <vector>
 
-// OBJECTIVE: Demonstrate HITS score iteration and greedy routing on a small
-// grid with shortcuts. The example is intentionally small and visual.
+// STUDENT OBJECTIVE
+// Learn two separate ideas: HITS repeatedly updates hub and authority scores,
+// while greedy routing chooses the neighbor closest to a target. The output
+// shows the scores and route length on a tiny graph. It is not the asymptotic
+// small-world theorem and does not model a full social network.
 
 std::pair<std::vector<double>, std::vector<double>> hits(const std::vector<std::vector<int>>& links, int rounds) {
     std::vector<double> a(links.size(), 1), h(links.size(), 1);

@@ -4,8 +4,11 @@
 #include <sstream>
 #include <vector>
 
-// OBJECTIVE: List all degree-one polynomial messages that agree with enough
-// received data points. This is a tiny, readable list-decoding example.
+// STUDENT OBJECTIVE
+// Learn the central list-decoding action: keep every candidate message that
+// agrees with enough received symbols. Here a message is a line through data
+// points, so the program lists candidate lines. It uses real numbers and lines
+// only; it is not the full Guruswami--Sudan algorithm over finite fields.
 
 struct Line { double m, b; };
 bool operator<(const Line& a, const Line& b) { return a.m != b.m ? a.m < b.m : a.b < b.b; }

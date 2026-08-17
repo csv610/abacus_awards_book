@@ -2,8 +2,11 @@
 #include <numeric>
 #include <vector>
 
-// OBJECTIVE: Count perfect matchings in a small bipartite graph twice: by
-// direct recursion and by Ryser's formula for the permanent.
+// STUDENT OBJECTIVE
+// Learn that a zero-one matrix can encode a bipartite matching problem. The
+// program counts perfect matchings twice—by trying choices recursively and by
+// Ryser's permanent formula—and compares the answers. Both methods are
+// exponential here; this is a counting demonstration, not a fast solver.
 
 long long count_matchings(const std::vector<std::vector<int>>& a, int row, int used) {
     if (row == static_cast<int>(a.size())) return 1;
