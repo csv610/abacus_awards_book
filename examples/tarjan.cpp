@@ -2,6 +2,9 @@
 #include <stack>
 #include <vector>
 
+// OBJECTIVE: Demonstrate three graph tools associated with Tarjan's work:
+// disjoint-set union, bridge detection, and strongly connected components.
+
 struct DSU {
     std::vector<int> p, rank;
     explicit DSU(int n) : p(n), rank(n, 0) { for (int i = 0; i < n; ++i) p[i] = i; }

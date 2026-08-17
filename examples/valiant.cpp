@@ -2,6 +2,9 @@
 #include <numeric>
 #include <vector>
 
+// OBJECTIVE: Count perfect matchings in a small bipartite graph twice: by
+// direct recursion and by Ryser's formula for the permanent.
+
 long long count_matchings(const std::vector<std::vector<int>>& a, int row, int used) {
     if (row == static_cast<int>(a.size())) return 1;
     long long total = 0;

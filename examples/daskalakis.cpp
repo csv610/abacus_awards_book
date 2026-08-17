@@ -2,6 +2,9 @@
 #include <cmath>
 #include <vector>
 
+// OBJECTIVE: Illustrate two ideas connected with Daskalakis's work: a simple
+// Nash equilibrium and a small PPAD-style path with another endpoint.
+
 bool epsilon_equilibrium(double row_h, double col_h, double epsilon) {
     // Matching pennies: with a fair opponent, neither pure deviation improves payoff.
     return std::abs(row_h - 0.5) <= epsilon && std::abs(col_h - 0.5) <= epsilon;

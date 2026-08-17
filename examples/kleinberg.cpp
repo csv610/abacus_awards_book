@@ -3,6 +3,9 @@
 #include <queue>
 #include <vector>
 
+// OBJECTIVE: Demonstrate HITS score iteration and greedy routing on a small
+// grid with shortcuts. The example is intentionally small and visual.
+
 std::pair<std::vector<double>, std::vector<double>> hits(const std::vector<std::vector<int>>& links, int rounds) {
     std::vector<double> a(links.size(), 1), h(links.size(), 1);
     for (int round = 0; round < rounds; ++round) {

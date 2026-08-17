@@ -4,6 +4,9 @@
 #include <random>
 #include <vector>
 
+// OBJECTIVE: Represent a MAX-CUT instance by vectors, round the vectors with
+// random hyperplanes, and observe the resulting cut value and ratio.
+
 struct Point { double x, y; };
 double dot(Point a, Point b) { return a.x*b.x + a.y*b.y; }
 double gw_ratio(double theta) {

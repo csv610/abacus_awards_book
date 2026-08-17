@@ -3,6 +3,9 @@
 #include <iostream>
 #include <vector>
 
+// OBJECTIVE: Show three small information-complexity ideas: binary entropy,
+// information surviving a noisy channel, and a clearly labeled toy protocol cost.
+
 // H(p) is the entropy of a bit that is 1 with probability p.
 // Entropy is measured in bits because we use log base 2.
 double binary_entropy(double probability_of_one) {

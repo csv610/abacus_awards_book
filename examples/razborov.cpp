@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 
+// OBJECTIVE: Check monotonicity of a Boolean truth table and show the simple
+// parity obstruction to computing parity with only AND and OR gates.
+
 bool parity(const std::vector<int>& x) {
     int ones = 0; for (int bit : x) ones += bit;
     return ones % 2;

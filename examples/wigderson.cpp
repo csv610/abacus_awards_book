@@ -4,6 +4,9 @@
 #include <random>
 #include <vector>
 
+// OBJECTIVE: Show how graph relabeling hides a graph's vertex names, then use
+// brute force to check isomorphism on a very small pair of graphs.
+
 std::vector<int> degree_sequence(const std::vector<std::pair<int, int>>& edges, int n) {
     std::vector<int> d(n);
     for (auto [u, v] : edges) { ++d[u]; ++d[v]; }

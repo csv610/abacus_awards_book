@@ -4,6 +4,9 @@
 #include <sstream>
 #include <vector>
 
+// OBJECTIVE: List all degree-one polynomial messages that agree with enough
+// received data points. This is a tiny, readable list-decoding example.
+
 struct Line { double m, b; };
 bool operator<(const Line& a, const Line& b) { return a.m != b.m ? a.m < b.m : a.b < b.b; }
 

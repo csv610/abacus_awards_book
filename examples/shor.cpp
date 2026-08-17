@@ -2,6 +2,9 @@
 #include <numeric>
 #include <vector>
 
+// OBJECTIVE: Demonstrate the classical number-theory part of Shor's method:
+// find an order modulo 15 and use that order to recover factors 3 and 5.
+
 int mod_pow(int base, int exponent, int modulus) {
     int result = 1;
     while (exponent) {

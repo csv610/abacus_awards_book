@@ -2,6 +2,9 @@
 #include <iostream>
 #include <vector>
 
+// OBJECTIVE: Build a small Laplacian-style linear system, compute graph energy,
+// and solve the system with the conjugate-gradient iteration.
+
 double dot(const std::vector<double>& a, const std::vector<double>& b) {
     double result = 0; for (size_t i = 0; i < a.size(); ++i) result += a[i] * b[i]; return result;
 }

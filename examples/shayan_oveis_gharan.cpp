@@ -2,6 +2,9 @@
 #include <cmath>
 #include <vector>
 
+// OBJECTIVE: Count the spanning trees of a triangle in two ways: enumerate
+// them directly and verify the count with a reduced Laplacian determinant.
+
 double determinant(std::vector<std::vector<double>> a) {
     double result = 1;
     for (int i = 0; i < static_cast<int>(a.size()); ++i) {
